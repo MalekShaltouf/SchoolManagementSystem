@@ -1,0 +1,41 @@
+﻿@model SSMS.Models.Class
+
+@{
+    ViewBag.Title = "Delete";
+}
+@section LinkStyle
+    {
+    <link rel="stylesheet" href="~/Content/DeleteUser_Style.css" />
+}
+<div class="parent" style="transform: translateY(125px);">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassNameInArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassNameInArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassNameInEnglish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassNameInEnglish)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("DeleteClass","Admin",FormMethod.Post,new { onsubmit = "return DeleteConfirm();"})) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Classes")
+        </div>
+    }
+</div>
+@section Scripts{
+    <script src="~/scripts/DeleteUser_Script.js"></script>
+}

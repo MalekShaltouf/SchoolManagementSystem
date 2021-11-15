@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index1";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("Users", "Select User")
+    <input type="submit"/>
+}

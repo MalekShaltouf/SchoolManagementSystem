@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b215e735122446ea63a4f4788509775" Name="Diagram1">
+        <EntityTypeShape EntityType="SSMSDBModel.Class" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSMSDBModel.Mark" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSMSDBModel.Material" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSMSDBModel.Student" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSMSDBModel.Teacher" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SSMSDBModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="SSMSDBModel.FK__Marks__ClassId__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Materials__Class__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Students__ClassI__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Teachers__ClassI__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Marks__MaterialI__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Marks__StudentId__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Teachers__Materi__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Students__UserId__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="SSMSDBModel.FK__Teachers__UserId__45F365D3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

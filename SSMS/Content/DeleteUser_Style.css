@@ -1,0 +1,28 @@
+﻿.parent {
+    width:400px;
+    margin:0 auto;
+    padding:20px;
+    background-color:#719cfe;
+    box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius:10px;
+    transform:translateY(75px);
+}
+dt {
+    font-size:22px;
+    color:#fff;
+}
+dd {
+    font-size:18px;
+    color:#000;
+}
+.form-actions span,.form-actions a{
+    margin-left:5px;
+    color:#fff;
+    font-size:18px;
+}
+input[type="submit"] {
+    background-color:#ff7f62;
+}
+input[type="submit"]:hover{
+    background-color:#d15e44;
+}

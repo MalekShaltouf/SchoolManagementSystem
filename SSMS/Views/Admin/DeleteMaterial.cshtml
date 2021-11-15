@@ -1,0 +1,50 @@
+﻿@model SSMS.Models.Material
+
+@{
+    ViewBag.Title = "DeleteMaterial";
+}
+
+@section LinkStyle
+    {
+    <link rel="stylesheet" href="~/Content/DeleteUser_Style.css" />
+}
+<div class="parent" style="transform: translateY(110px);">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialNameInArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaterialNameInArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialNameInEnglish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaterialNameInEnglish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Class.ClassNameInArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Class.ClassNameInArabic)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("DeleteMaterial", "Admin", FormMethod.Post, new { onsubmit = "return DeleteConfirm();" })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List","Materials")
+        </div>
+    }
+</div>
+@section Scripts{
+    <script src="~/scripts/DeleteUser_Script.js"></script>
+}

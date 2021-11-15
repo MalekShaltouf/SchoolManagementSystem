@@ -1,0 +1,15 @@
+﻿@using SSMS.Models;
+@{
+    ViewBag.Title = "Profile";
+}
+
+@section LinkStyle{
+    <link rel="stylesheet" href="~/Content/DeleteUser_Style.css" />
+}
+
+@{
+    User user = ViewBag.Profile;
+
+}
+@Html.Partial("_Profile", user)
+

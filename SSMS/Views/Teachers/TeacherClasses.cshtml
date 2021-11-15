@@ -1,0 +1,58 @@
+﻿@model List<SSMS.Models.Class>
+@{
+    ViewBag.Title = "UserTeacher";
+    //Layout = "~/Views/Shared/_DisplayDataLayout.cshtml";
+}
+@section LinkStyle{
+    <link href="~/Content/_DisplayDataLayout.css" rel="stylesheet" />
+    <link href="~/Content/TeacherClasses_Style.css" rel = "stylesheet"/>
+}
+<div class="parent">
+    <div class="Childs">
+        <div class="Child1">
+            <div class="welc-letter">
+                <div class="Admin-Word">Teacher</div>
+                <div>
+                    <h3>welcome,</h3>
+                    <span>@Session["UserName"]</span>
+                </div>
+            </div>
+            <div class="Menu">
+                <h5>MaterialName:</h5>
+                <span>@ViewBag.MaterialName</span>
+            </div>
+        </div>
+        <div class="Child2">
+            <div class="table-title">
+                <h3>Teacher Classes</h3>
+            </div>
+            @if (Model.Count > 0)
+            {
+                <div>
+                    <table class="table1">
+                        <tr>
+                            <th>ClassId</th>
+                            <th>ClassName(Ar)</th>
+                            <th>ClassName(En)</th>
+                            <th>ClassStudents</th>
+                        </tr>
+                        @foreach (var cclass in Model)
+                        {
+                            <tr>
+                                <td>@cclass.ClassId</td>
+                                <td>@cclass.ClassNameInArabic</td>
+                                <td>@cclass.ClassNameInEnglish</td>
+                                <td>@Html.ActionLink("Students","TeacherStudents","Teachers",new { id = cclass.ClassId,MaterialName = ViewBag.MaterialName,MaterialId = ViewBag.MaterialId },null)</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+            else
+            {
+
+                <div class="Data-Not-Found">There is no data to display</div>
+            }
+        </div>
+    </div>
+</div>

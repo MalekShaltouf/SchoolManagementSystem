@@ -1,0 +1,67 @@
+﻿@model SSMS.Models.Teacher
+
+@{
+    ViewBag.Title = "DeleteTeacher";
+}
+
+@section LinkStyle
+    {
+    <link rel="stylesheet" href="~/Content/DeleteUser_Style.css" />
+}
+<div class="parent">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullNameInArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullNameInArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullNameInEnglish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullNameInEnglish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Material.MaterialNameInArabic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Material.MaterialNameInArabic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FullName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("DeleteTeacher", "Admin", FormMethod.Post, new { onsubmit = "return DeleteConfirm();" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Teachers")
+        </div>
+    }
+</div>
+@section Scripts{
+    <script src="~/scripts/DeleteUser_Script.js"></script>
+}

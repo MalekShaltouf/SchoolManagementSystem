@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+@section LinkStyle{
+    <link rel="stylesheet" href="~/Content/Login_Style.css"/> 
+}
+<div class="login-page">
+    <div class="form">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "login-form" }))
+            {
+                @Html.TextBox("UserName", null, new { placeholder = "username" })
+                @Html.Password("Password", null, new { placeholder = "Password" })
+                <input type="submit" value="Login" />
+                <span style="color:#fff;display:block">@ViewBag.LoginStatus</span>
+            }
+    </div>
+</div>
+

@@ -1,0 +1,21 @@
+﻿.table1 th, td {
+    width: 250px;
+}
+
+.Menu h5, .Menu span {
+    display: inline-block;
+}
+
+.Menu h5 {
+    color: #719cfe;
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left:16px;
+}
+
+.Menu span {
+    text-indent: 9px;
+    font-size: 22px;
+    color: #ff7f62;
+    font-family: Arial;
+}

@@ -1,0 +1,18 @@
+1- must be add dialog for suring deleting operation
+2- prevent normal user to access to Delete page (Jus Admin cab be it).
+3- create partial view for all pages than contains same Body such as : Classes,Teachers,Studensts,....
+4- when click on ClassName(Ar)/(En) must be display all Material that exists in that class
+5- when click on TeacherName(Ar)/(En) must be display all Material that Provided it.
+6-when click on StudentName(Ar)/(En) must be display all Material and mark.
+7- add InputBox in ChangePassword Page which request from user(teacher || student) to enter old password => so if the oldPassword that user enter it not match with
+   OldPassword in DataBase => will not allow to user Changer Passeword.  
+8- afer each Add,Update Operation must be redirect user to another page beacuse after to do Add,Update opereation 
+   the user can be repeat same operation(Add,Update) just using Reload for page => or search to another solution 
+   Different from Redirect user to Anouther Page.
+   Add operation is most important to redirect user to page because when reload page will add same user with different Id while Update Operation when do Reload page
+   will execute Update Operation Agin.
+
+
+when need check if the user enter to specific page with id 
+or not try do this by specify the route for this page
+insted of check by if(id == null){}.

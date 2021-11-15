@@ -1,0 +1,27 @@
+﻿* {
+    margin:0;
+}
+.body-content {
+    margin-top:36px;
+    min-width:1349px;
+    min-height:567px;
+}
+.SuccessfulStatus,.FaildStatus {
+    color:green;
+    display:inline-block;
+    font-size:18px;
+    margin-left:5px;
+    font-weight:bold;
+    transform:translateY(3px);
+}
+.SuccessfulStatus {
+    color:green;
+}
+.FaildStatus {
+    color:red;
+}
+.UserName-Span {
+    color:green;
+    font-size:18px;
+    font-family:Arial, Helvetica, sans-serif;
+}

@@ -1,0 +1,39 @@
+﻿@using SSMS.Models;
+@model IEnumerable<Student>
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_DisplayDataLayout.cshtml";
+}
+@section ListLink{
+    <li>@Html.ActionLink("Add Students To Class", "AddStudent")</li>
+}
+@section Title {
+    Students Information
+}
+<tr>
+    <th>StuId</th>
+    <th>FName(Ar)</th>
+    <th>FName(En)</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>ClassName</th>
+    <th>Updates</th>
+    <th>Delete</th>
+</tr>
+@foreach (var stu in Model)
+{
+    <tr>
+        <td>@stu.StudentID</td>
+        <td>@stu.FullNameInArabic</td>
+        <td>@stu.FullNameInEnglish</td>
+        <td>@stu.Gender</td>
+        <td>@stu.Age</td>
+        @{
+            SSMSDataContext context = new SSMSDataContext();
+            string ClassName = context.Classes.SingleOrDefault(c => c.ClassId == stu.ClassId).ClassNameInEnglish;
+        }
+        <td>@ClassName</td>
+        <td>@Html.ActionLink("Update", "UpdateStudent", new { id = stu.StudentID })</td>
+        <td><button onclick="location.href='@Url.Action("DeleteStudent", "Admin", new { id = stu.StudentID })'">Delete</button></td>
+    </tr>
+}

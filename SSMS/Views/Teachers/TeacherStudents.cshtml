@@ -1,0 +1,96 @@
+﻿@using SSMS.Models;
+@model List<Student>
+@{
+    ViewBag.Title = "TeacherStudents";
+    //Layout = "~/Views/Shared/_DisplayDataLayout.cshtml";
+}
+@section LinkStyle{
+    <link href="~/Content/_DisplayDataLayout.css" rel="stylesheet" />
+    <link href="~/Content/TeacherClasses_Style.css" rel="stylesheet" />
+}
+@section StyleTag{
+    .table1 th, td{
+    width:136px;
+    }
+    .Menu ul{
+    margin-top:20px;
+    }
+}
+<div class="parent">
+    <div class="Childs">
+        <div class="Child1">
+            <div class="welc-letter">
+                <div class="Admin-Word">Teacher</div>
+                <div>
+                    <h3>welcome,</h3>
+                    <span>@Session["UserName"]</span>
+                </div>
+            </div>
+            <div class="Menu">
+                <h5>MaterialName:</h5>
+                <span>@ViewBag.MaterialName</span>
+                <ul>
+                    <li>@Html.ActionLink("Teacher Classes", "TeacherClasses", "Teachers")</li>
+                </ul>
+            </div>
+        </div>
+        <div class="Child2">
+            <div class="table-title">
+                <h3>Teacher Students</h3>
+            </div>
+            @if (Model.Count > 0)
+            {
+                <div>
+                    <table class="table1">
+                        <tr>
+                            <th>StudentId</th>
+                            <th>FName(Ar)</th>
+                            <th>FName(En)</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Marks</th>
+                            <th></th>
+                        </tr>
+                        @foreach (var student in Model)
+                        {
+                            <tr>
+                                <td>@student.StudentID</td>
+                                <td>@student.FullNameInArabic</td>
+                                <td>@student.FullNameInEnglish</td>
+                                <td>@student.Gender</td>
+                                <td>@student.Age</td>
+                                @{
+                                    /*[Start]
+                                    * we want to check if the student Has been added mark or not so =>
+                                    * if has been added mark for student => will display for student:
+                                    *                                       A- The Mark for student
+                                    *                                       B- link that make teacher to update mark
+                                    * else => if user not has been added mark will display for student:
+                                    *         Link that make teacher to Add Mark for student
+                                    */
+                                    SSMSDataContext context = new SSMSDataContext();
+                                    int MaterialId = ViewBag.MaterialId;
+                                    if (!context.Marks.Any(mark => mark.StudentId == student.StudentID && mark.MaterialId == MaterialId)){ //this check mean => if student has'nt been added mark in specific material so => execute the code that include if-statement
+                                        <td>Null</td>
+                                        <td>@Html.ActionLink("Add Mark", "AddMark", "Teachers", new { id = ViewBag.ClassId, StudentId = student.StudentID, MaterialId = ViewBag.MaterialId, MaterialName = ViewBag.MaterialName }, null)</td>
+                                    }
+                                    else{ // here mean => if student has been added mark
+                                        Mark m = context.Marks.SingleOrDefault(mark => mark.StudentId == student.StudentID && mark.MaterialId == MaterialId);
+                                        int MarkId = m.MarkId;
+                                        int? Mark = m.Mark1;
+                                        <td>@Mark</td>
+                                        <td>@Html.ActionLink("Update Mark", "UpdateMark", "Teachers", new { id = ViewBag.ClassId, StudentId = student.StudentID, MaterialId = ViewBag.MaterialId,MaterialName = ViewBag.MaterialName, MarkId = m.MarkId }, null)</td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </table>
+                </div>
+              }
+              else
+               {
+                  <div class="Data-Not-Found">There is no data to display</div>
+               }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@using SSMS.Models;
+@model List<Material>
+@{
+    ViewBag.Title = "Materials";
+    Layout = "~/Views/Shared/_DisplayDataLayout.cshtml";
+}
+
+@section LinkStyle2{
+<link href="~/Content/Class_Style.css" rel="stylesheet" />
+    <link href="~/Content/Material_Style.css" rel="stylesheet" />
+    }
+@section ListLink{
+    <li>@Html.ActionLink("Add Material To Class", "AddMaterials")</li>
+    }
+@section Title{
+    Materials Information
+}
+<tr>
+    <th>MId</th>
+    <th>MName(Ar)</th>
+    <th>MName(En)</th>
+    <th>ClassName</th>
+    <th>Updates</th>
+    <th>Delete</th>
+</tr>
+
+@foreach (var material in Model)
+{
+    <tr>
+        <td>@material.MaterialId</td>
+        <td>@material.MaterialNameInArabic</td>
+        <td>@material.MaterialNameInEnglish</td>
+        @{ 
+            SSMSDataContext context = new SSMSDataContext();
+            string ClassName = context.Classes.SingleOrDefault(c => c.ClassId == material.ClassId).ClassNameInEnglish;
+        }
+        <td>@ClassName</td>
+        <td>@Html.ActionLink("Update", "UpdateMaterial", new { id = material.MaterialId })</td>
+        <td><button onclick="location.href='@Url.Action("DeleteMaterial","Admin",new { id = material.MaterialId})'">Delete</button></td>
+    </tr>
+}

@@ -1,0 +1,35 @@
+﻿@model List<SSMS.Models.Class>
+@{
+    ViewBag.Title = "Classes";
+    Layout = "~/Views/Shared/_DisplayDataLayout.cshtml";
+}
+@section LinkStyle2{
+    <link rel="stylesheet" href="~/Content/Class_Style.css"/>
+}
+@section ListLink{
+    <li>@Html.ActionLink("Add Classes", "AddClass")</li>
+}
+@section Title {
+    Classes Information
+}
+<tr>
+    <th>ClassId</th>
+    <th>ClassName(Ar)</th>
+    <th>ClassName(En)</th>
+    <th>Students</th>
+    <th>Updates</th>
+    <th>Delete</th>
+</tr>
+@foreach (var cclass in Model)
+{
+    <tr>
+        <td>@cclass.ClassId</td>
+        <td>@cclass.ClassNameInArabic</td>
+        <td>@cclass.ClassNameInEnglish</td>
+        <td>@Html.ActionLink("Students","StudentsClass","Classes",new { id = cclass.ClassId},null)</td>
+        <td>@Html.ActionLink("Update", "UpdateClass",new { id = cclass.ClassId})</td>
+        <td><button onclick="location.href='@Url.Action("DeleteClass","Admin",new { id = cclass.ClassId})'">Delete</button></td>
+    </tr>
+}
+
+
